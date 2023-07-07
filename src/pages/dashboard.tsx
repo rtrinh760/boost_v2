@@ -1,68 +1,13 @@
-import { useAuth, UserButton, SignedIn, useUser } from "@clerk/nextjs";
+import { UserButton, SignedIn } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
 import { api } from "~/utils/api";
-
-type Tab = {
-  url: string;
-  id: string;
-  user_id: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-const TabList = (props: Tab) => {
-  const tab = props;
-  return (
-    <div
-      key={tab.id}
-      className="flex flex-col items-center justify-center px-20 text-center"
-    >
-      <div className="p-2">{tab.url}</div>
-    </div>
-  );
-};
-
-const Form = () => {
-  const [input, setInput] = useState("");
-  const { isSignedIn } = useAuth();
-
-  const { mutate } = api.tab.postMessage.useMutation();
-
-  if (!isSignedIn) {
-    return null;
-  }
-
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        mutate({ url: input });
-        setInput("");
-      }}
-    >
-      <input
-        type="text"
-        className="border-2 border-zinc-800 bg-neutral-900 px-4 py-2 text-white focus:outline-none"
-        placeholder="Enter URL"
-        value={input}
-        onChange={(event) => setInput(event.target.value)}
-      />
-      <button
-        type="submit"
-        className="border-2 border-zinc-800 bg-[#26263d] p-2 text-white focus:outline-none"
-        onClick={() => mutate({ url: input })}
-      >
-        Submit
-      </button>
-    </form>
-  );
-};
+import Form from "~/components/form";
+import Tab from "~/components/tab";
+import { useEffect } from "react";
 
 const Dashboard: NextPage = () => {
-
-  const { data, isLoading } = api.tab.getAll.useQuery();
+  const { data, isLoading } = api.tabs.getAll.useQuery();
 
   // if (isLoading) {
   //   return (
@@ -116,7 +61,7 @@ const Dashboard: NextPage = () => {
         {data && (
           <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
             {data.map((tab) => (
-              <TabList {...tab} key={tab.id} />
+              <Tab {...tab} key={tab.id} />
             ))}
           </div>
         )}
