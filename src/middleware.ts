@@ -1,30 +1,14 @@
 import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
-import { AuthObject } from "@clerk/nextjs/dist/types/server";
-import { NextRequest, NextResponse } from "next/server";
 
-type AfterAuthFunction = (
-  auth: AuthObject & {
-    isPublicRoute: boolean;
-  },
-  req: NextRequest,
-) => void;
-
-const afterAuth: AfterAuthFunction = (auth, req) => {
-  if (!auth.userId && !auth.isPublicRoute) {
-    redirectToSignIn({ returnBackUrl: req.url });
-    return;
-  }
-
-  if (auth.userId && req.nextUrl.pathname !== "/dashboard") {
-    const dashboard = new URL("/dashboard", req.url);
-
-    return NextResponse.redirect(dashboard);
-  }
-};
-
+// Modify ONLY when special auth logic is needed
 export default authMiddleware({
   publicRoutes: ["/"],
-  afterAuth,
+  afterAuth(auth, req, evt) {
+    if (!auth.userId && !auth.isPublicRoute) {
+      redirectToSignIn({ returnBackUrl: req.url });
+      return;
+    }
+  },
 });
 
 export const config = {
