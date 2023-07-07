@@ -1,4 +1,4 @@
-import { UserButton, SignedIn } from "@clerk/nextjs";
+import { UserButton, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { api } from "~/utils/api";
@@ -19,6 +19,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <>
+    <SignedIn>
       <Head>
         <title>Boost</title>
         <meta name="description" content="Tab Management App" />
@@ -50,7 +51,6 @@ const Dashboard: NextPage = () => {
             id="navbar-menu"
             className="hidden w-full justify-end md:block md:w-auto"
           >
-            <SignedIn>
               <div className="flex flex-row space-x-10">
                 <Link href="/">
                   <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
@@ -59,7 +59,6 @@ const Dashboard: NextPage = () => {
                 </Link>
                 <UserButton afterSignOutUrl="/" />
               </div>
-            </SignedIn>
           </div>
         </nav>
         <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
@@ -78,6 +77,10 @@ const Dashboard: NextPage = () => {
           </div>
         )}
       </main>
+    </SignedIn>
+    <SignedOut>
+      <RedirectToSignIn />
+    </SignedOut>
     </>
   );
 };
