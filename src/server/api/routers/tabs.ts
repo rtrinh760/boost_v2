@@ -11,6 +11,9 @@ export const tabsRouter = createTRPCRouter({
         where: {
           user_id: currentUserId,
         },
+        orderBy: {
+          createdAt: "asc",
+        },
       });
     } catch (error) {
       console.log("error", error);
