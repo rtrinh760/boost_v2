@@ -22,7 +22,12 @@ const Form = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        mutate({ url: input });
+
+        if (!input.endsWith(".com") && !input.endsWith(".COM")) {
+          return alert("Please enter a valid URL");
+        }
+
+        mutate({ url: input.toLowerCase() });
         setInput("");
       }}
     >
