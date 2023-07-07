@@ -1,6 +1,5 @@
 import {
   SignInButton,
-  useUser,
   SignUpButton,
   SignedOut,
   SignedIn,
@@ -11,7 +10,6 @@ import Head from "next/head";
 import Image from "next/image";
 
 const Home: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -47,12 +45,12 @@ const Home: NextPage = () => {
           >
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
-                <SignInButton mode="modal">
+                <SignInButton mode="modal" redirectUrl="/dashboard">
                   <button className="flex-end rounded-lg px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-white hover:text-black">
                     Sign In
                   </button>
                 </SignInButton>
-                <SignUpButton mode="modal">
+                <SignUpButton mode="modal" redirectUrl="/dashboard">
                   <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-white hover:text-black">
                     Sign Up
                   </button>
@@ -82,11 +80,11 @@ const Home: NextPage = () => {
             <div className="md:w-1/2">
               {/* TODO: replace with image of actual application */}
               <Image
-                src="/computer.webp"
+                src="/gal2.png"
                 alt="Image of a computer"
                 width={600}
                 height={600}
-                className="rounded-lg"
+                className="rounded-xl"
               />
             </div>
           </div>
