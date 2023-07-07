@@ -8,6 +8,7 @@ import {
 import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Tab Management App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col bg-[#181823]">
+      <main className="flex min-h-screen flex-col bg-zinc-900">
         <nav
           className="
           mx-auto
@@ -46,19 +47,26 @@ const Home: NextPage = () => {
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
                 <SignInButton mode="modal" redirectUrl="/dashboard">
-                  <button className="flex-end rounded-lg px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-white hover:text-black">
+                  <button className="flex-end rounded-lg px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-indigo-200 hover:text-black">
                     Sign In
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal" redirectUrl="/dashboard">
-                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-white hover:text-black">
+                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
                     Sign Up
                   </button>
                 </SignUpButton>
               </div>
             </SignedOut>
             <SignedIn>
-              <UserButton afterSignOutUrl="/" />
+              <div className="flex flex-row space-x-10">
+                <Link href="/dashboard">
+                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
+                    Dashboard
+                  </button>
+                </Link>
+                <UserButton afterSignOutUrl="/" />
+              </div>
             </SignedIn>
           </div>
         </nav>

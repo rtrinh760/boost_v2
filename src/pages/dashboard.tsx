@@ -2,9 +2,9 @@ import { UserButton, SignedIn } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { api } from "~/utils/api";
-import Form from "~/components/form";
-import Tab from "~/components/tab";
-import { useEffect } from "react";
+import Form from "~/components/Form";
+import Tab from "~/components/Tab";
+import Link from "next/link";
 
 const Dashboard: NextPage = () => {
   const { data, isLoading } = api.tabs.getAll.useQuery();
@@ -24,7 +24,7 @@ const Dashboard: NextPage = () => {
         <meta name="description" content="Tab Management App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col bg-[#181823]">
+      <main className="flex min-h-screen flex-col bg-zinc-900">
         <nav
           className="
               mx-auto
@@ -51,7 +51,14 @@ const Dashboard: NextPage = () => {
             className="hidden w-full justify-end md:block md:w-auto"
           >
             <SignedIn>
-              <UserButton afterSignOutUrl="/" />
+              <div className="flex flex-row space-x-10">
+                <Link href="/">
+                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
+                    Home
+                  </button>
+                </Link>
+                <UserButton afterSignOutUrl="/" />
+              </div>
             </SignedIn>
           </div>
         </nav>
