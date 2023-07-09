@@ -42,4 +42,25 @@ export const tabsRouter = createTRPCRouter({
         throw new Error("Error creating tab");
       }
     }),
+
+  delete: privateProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const currentUserId = ctx.userId;
+
+      try {
+        await ctx.prisma.tab.delete({
+          where: {
+            id: input.id,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+        throw new Error("Error deleting tab");
+      }
+    }),
 });
