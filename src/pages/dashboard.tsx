@@ -90,21 +90,17 @@ const Dashboard: NextPage = () => {
           <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
             <Form />
           </div>
-          {data.length > 0 && (
-            <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
-              {data.map((tab) => (
-                <div className="flex flex-row">
-                  <Tab {...tab} key={tab.id} />
-                  <button
-                    className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black"
-                    onClick={() => mutate({ id: tab.id })}
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))}
+          {data.length > 0 && data.map((tab) => (
+            <div className="flex flex-1 flex-row items-center justify-center px-20 text-center" key={tab.id}>
+              <Tab {...tab} />
+              <button
+                className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black"
+                onClick={() => mutate({ id: tab.id })}
+              >
+                Delete
+              </button>
             </div>
-          )}
+          ))}
           {data.length == 0 && (
             <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
               <div className="p-2 text-white">No tabs!</div>
