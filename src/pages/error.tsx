@@ -1,6 +1,6 @@
 "use client";
-import { NextPage } from "next";
-import { ErrorProps } from "next/error";
+import type { NextPage } from "next";
+import type { ErrorProps } from "next/error";
 
 const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   return (
