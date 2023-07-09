@@ -1,5 +1,5 @@
 import Link from "next/link";
-import getWebsiteTitle from "~/scripts/getWebsiteTitle";
+// import getWebsiteTitle from "~/scripts/getWebsiteTitle";
 
 export type Tab = {
   url: string;
@@ -14,6 +14,10 @@ const Tab = (props: Tab) => {
   const shortUrl = tab.url
     .replace(/^(?:https?:\/\/)?(?:www\.)?/i, "")
     .split("/")[0];
+
+  if(!shortUrl) {
+    return null;
+  }
   
   return (
     <div
@@ -31,6 +35,7 @@ const Tab = (props: Tab) => {
             height="16"
             width="24"
             src={`http://www.google.com/s2/favicons?domain=${shortUrl}`}
+            alt="favicon"
           />
           <span>{shortUrl}</span>
         </Link>
