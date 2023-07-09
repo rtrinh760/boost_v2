@@ -8,7 +8,7 @@ const Form = () => {
 
   const ctx = api.useContext();
 
-  const { mutate, isLoading } = api.tabs.create.useMutation({
+  const { mutate } = api.tabs.create.useMutation({
     onSuccess: () => {
       void ctx.tabs.getAll.invalidate();
     },

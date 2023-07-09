@@ -50,8 +50,6 @@ export const tabsRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const currentUserId = ctx.userId;
-
       try {
         await ctx.prisma.tab.delete({
           where: {
