@@ -23,8 +23,8 @@ const Form = () => {
       onSubmit={(e) => {
         e.preventDefault();
 
-        if (!input.endsWith(".com") && !input.endsWith(".COM")) {
-          return alert("Please enter a valid URL");
+        if (!input.startsWith("https://")) {
+          setInput(`https://${input}`);
         }
 
         mutate({ url: input.toLowerCase() });
