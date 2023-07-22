@@ -12,6 +12,7 @@ import Tab from "~/components/tab";
 import Link from "next/link";
 import { FadeLoader } from "react-spinners";
 import { redirect } from "next/navigation";
+import getTabs from "extension/scripts/getTabs";
 
 const Dashboard: NextPage = () => {
   const { data, isLoading } = api.tabs.getAll.useQuery();
