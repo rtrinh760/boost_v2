@@ -1,5 +1,4 @@
 import Link from "next/link";
-// import getWebsiteTitle from "~/scripts/getWebsiteTitle";
 
 export type Tab = {
   url: string;
@@ -11,6 +10,7 @@ export type Tab = {
 
 const Tab = (props: Tab) => {
   const tab = props;
+  let newUrl = tab.url;
   const shortUrl = tab.url
     .replace(/^(?:https?:\/\/)?(?:www\.)?/i, "")
     .split("/")[0];
@@ -18,15 +18,18 @@ const Tab = (props: Tab) => {
   if(!shortUrl) {
     return null;
   }
+
+  if (!tab.url.includes("https://")) {
+    newUrl = `https://${tab.url}`;
+  }
   
   return (
     <div
       key={tab.id}
-      className="flex flex-col items-center justify-center px-20 text-center"
     >
       <div className="p-2 text-white">
         <Link
-          href={`${tab.url}`}
+          href={newUrl}
           target="_blank"
           rel="noopener"
           className="flex flex-row space-x-2"
@@ -37,7 +40,7 @@ const Tab = (props: Tab) => {
             src={`http://www.google.com/s2/favicons?domain=${shortUrl}`}
             alt="favicon"
           />
-          <span>{shortUrl}</span>
+          <span>{newUrl}</span>
         </Link>
       </div>
     </div>
