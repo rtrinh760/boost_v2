@@ -12,6 +12,7 @@ import Tab from "~/components/tab";
 import Link from "next/link";
 import { FadeLoader } from "react-spinners";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Dashboard: NextPage = () => {
   const { data, isLoading } = api.tabs.getAll.useQuery();
@@ -20,6 +21,7 @@ const Dashboard: NextPage = () => {
 
   const { mutate } = api.tabs.delete.useMutation({
     onSuccess: () => {
+      toast.success("Tab deleted!");
       void ctx.tabs.getAll.invalidate();
     },
   });

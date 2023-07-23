@@ -1,5 +1,6 @@
 import { useAuth } from "@clerk/nextjs";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { api } from "~/utils/api";
 
 const Form = () => {
@@ -10,6 +11,7 @@ const Form = () => {
 
   const { mutate } = api.tabs.create.useMutation({
     onSuccess: () => {
+      toast.success("Tab saved!");
       void ctx.tabs.getAll.invalidate();
     },
   });
@@ -22,10 +24,6 @@ const Form = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-
-        if (!input.startsWith("https://")) {
-          setInput(`https://${input}`);
-        }
 
         mutate({ url: input.toLowerCase() });
         setInput("");
