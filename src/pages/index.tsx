@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Tab Management App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col bg-zinc-900">
+      <main className="flex min-h-screen flex-col items-center bg-[#110619] text-[#f4eafa]">
         <nav
           className="
           mx-auto
@@ -29,7 +29,6 @@ const Home: NextPage = () => {
           items-center
           justify-between
           p-6
-          text-lg text-gray-700
         "
         >
           <div className="flex space-x-3.5">
@@ -47,12 +46,12 @@ const Home: NextPage = () => {
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
                 <SignInButton mode="modal" redirectUrl="/dashboard">
-                  <button className="flex-end rounded-lg px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:bg-indigo-200 hover:text-black">
+                  <button className="flex-end rounded-lg bg-[#280d3a] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5">
                     Sign In
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal" redirectUrl="/dashboard">
-                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
+                  <button className="flex-end rounded-lg bg-[#561c7d] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
                     Sign Up
                   </button>
                 </SignUpButton>
@@ -61,7 +60,7 @@ const Home: NextPage = () => {
             <SignedIn>
               <div className="flex flex-row space-x-10">
                 <Link href="/dashboard">
-                  <button className="flex-end rounded-lg border px-4 py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-200 hover:text-black">
+                  <button className="flex-end rounded-lg bg-[#561c7d] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
                     Dashboard
                   </button>
                 </Link>
@@ -75,14 +74,14 @@ const Home: NextPage = () => {
             <div>
               <h1 className="text-4xl font-bold">
                 <div className="text-inline">
-                  <span className="bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[#561c7d] to-[#9840d4] bg-clip-text text-transparent">
                     Boost
                   </span>{" "}
                   your productivity
                 </div>
               </h1>
-              <h2 className="pt-2 text-2xl font-bold">
-                Save your tabs and access them anywhere
+              <h2 className="pt-5 text-2xl font-bold">
+                Save your tabs and access them anywhere. Hassle free.
               </h2>
             </div>
             <div className="md:w-1/2">
@@ -94,6 +93,65 @@ const Home: NextPage = () => {
                 height={600}
                 className="rounded-xl"
               />
+            </div>
+          </div>
+        </div>
+        <div className="text-center">
+          <h1 className="py-5 text-4xl font-bold">Browse stress-free</h1>
+          <p className="text-xl">
+            Let our extension do the heavy lifting with features such as:
+          </p>
+        </div>
+        <div className="h-600">
+          <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="mb-2 mt-4 text-2xl font-bold">Easy Bookmarking</h3>
+                <p className="text-lg">Instantly save your open tabs as a session.</p>
+              </div>
+              <div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="mb-2 mt-4 text-2xl font-bold">Cloud Saving</h3>
+                <p className="text-lg">Keep track of sessions at all times.</p>
+              </div>
+              <div>
+                <div>
+                  <img src="icon-url" alt="Feature 3" />
+                </div>
+                <h3 className="mb-2 mt-4 text-2xl font-bold">Feature 3</h3>
+                <p className="text-lg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem architecto veniam nam quaerat esse, eos eveniet rerum quia possimus dolorem magni, quisquam alias enim cumque ex iusto dignissimos dolores cupiditate.</p>
+              </div>
             </div>
           </div>
         </div>
