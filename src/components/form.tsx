@@ -31,19 +31,22 @@ const Form = () => {
         mutate({ url: input.toLowerCase() });
         setInput("");
       }}
-    >
+      className="pl-40 group">
       <input
         type="text"
-        className="border-2 border-zinc-800 bg-neutral-900 px-4 py-2 text-white focus:outline-none"
+        className=" bg-[#110619] align-middle px-4 py-2 text-white focus:outline-none"
         placeholder="Enter URL"
         value={input}
         onChange={(event) => setInput(event.target.value)}
       />
       <button
         type="submit"
-        className="border-2 border-zinc-800 bg-[#26263d] p-2 text-white focus:outline-none"
+        className="p-2 align-middle text-white focus:outline-none"
       >
-        Submit
+        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+</svg>
+</span>
       </button>
     </form>
   );
