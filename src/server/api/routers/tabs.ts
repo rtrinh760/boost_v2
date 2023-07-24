@@ -1,4 +1,5 @@
 import { z } from "zod";
+import getMetaData from "metadata-scraper";
 
 import { createTRPCRouter, privateProcedure } from "~/server/api/trpc";
 
@@ -30,11 +31,23 @@ export const tabsRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const currentUserId = ctx.userId;
 
+      if(!input.url.startsWith("http")) {
+        input.url = "https://" + input.url;
+      }
+
       try {
+        let { title: urlTitle } = await getMetaData(input.url);
+
+        if (!urlTitle) {
+          urlTitle = input.url;
+        }
+
         await ctx.prisma.tab.create({
           data: {
             user_id: currentUserId,
             url: input.url,
+            session_id: "",
+            title: urlTitle,
           },
         });
       } catch (error) {

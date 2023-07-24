@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export type Tab = {
   url: string;
+  title: string;
   id: string;
   user_id: string;
   createdAt: Date;
@@ -10,26 +11,19 @@ export type Tab = {
 
 const Tab = (props: Tab) => {
   const tab = props;
-  let newUrl = tab.url;
   const shortUrl = tab.url
     .replace(/^(?:https?:\/\/)?(?:www\.)?/i, "")
     .split("/")[0];
 
-  if(!shortUrl) {
+  if (!shortUrl) {
     return null;
   }
 
-  if (!tab.url.includes("https://")) {
-    newUrl = `https://${tab.url}`;
-  }
-  
   return (
-    <div
-      key={tab.id}
-    >
+    <div key={tab.id}>
       <div className="p-2 text-white">
         <Link
-          href={newUrl}
+          href={tab.url}
           target="_blank"
           rel="noopener"
           className="flex flex-row space-x-2"
@@ -40,7 +34,7 @@ const Tab = (props: Tab) => {
             src={`http://www.google.com/s2/favicons?domain=${shortUrl}`}
             alt="favicon"
           />
-          <span>{newUrl}</span>
+          <span>{tab.title}</span>
         </Link>
       </div>
     </div>
