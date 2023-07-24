@@ -14,6 +14,9 @@ const Form = () => {
       toast.success("Tab saved!");
       void ctx.tabs.getAll.invalidate();
     },
+    onError: () => {
+      toast.error("Invalid URL! Please try again.");
+    }
   });
 
   if (!isSignedIn) {

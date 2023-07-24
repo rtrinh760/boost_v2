@@ -11,7 +11,6 @@ import Form from "~/components/form";
 import Tab from "~/components/tab";
 import Link from "next/link";
 import { FadeLoader } from "react-spinners";
-import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
 const Dashboard: NextPage = () => {
@@ -42,7 +41,7 @@ const Dashboard: NextPage = () => {
   }
 
   if (!data) {
-    return redirect("/error");
+    toast.error("Something went wrong! Please try again.");
   }
 
   return (
