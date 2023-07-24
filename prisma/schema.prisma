@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,11 +9,38 @@ datasource db {
 }
 
 model Tab {
-  url       String
-  id        String   @id @default(cuid())
-  user_id   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  url        String
+  title      String
+  id         String   @id @default(cuid())
+  user_id    String   
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  session_id String
+  session    Session  @relation(fields: [user_id], references: [session_id])
+
+  @@index([user_id])
+}
+
+model Session {
+  session_id   String   @id @default(cuid())
+  session_name String
+  user_id      String
+  tabs         Tab[]
+  notes        Note[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([user_id])
+}
+
+model Note {
+  id         String   @id @default(cuid())
+  user_id    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  content    String
+  session_id String
+  session    Session  @relation(fields: [user_id], references: [session_id])
 
   @@index([user_id])
 }
