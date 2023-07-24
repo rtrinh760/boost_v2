@@ -21,6 +21,7 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center bg-[#110619] text-[#f4eafa]">
         <nav
           className="
+          ms:p-12
           mx-auto
           flex
           w-full
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
           items-center
           justify-between
           p-6
+          md:p-8
         "
         >
           <div className="flex space-x-3.5">
@@ -39,10 +41,7 @@ const Home: NextPage = () => {
               Boost
             </h1>
           </div>
-          <div
-            id="navbar-menu"
-            className="hidden w-full justify-end md:block md:w-auto"
-          >
+          <div id="navbar-menu" className="relative w-auto justify-end">
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
                 <SignInButton mode="modal" redirectUrl="/dashboard">
@@ -69,7 +68,7 @@ const Home: NextPage = () => {
             </SignedIn>
           </div>
         </nav>
-        <div className="align-center mx-auto my-auto flex h-screen w-screen flex-col items-center justify-center pb-10 text-center text-lg font-semibold text-white">
+        <div className="align-center mx-auto my-auto flex h-screen w-screen flex-col items-center justify-center text-center text-lg font-semibold text-white">
           <div className="flex flex-col items-center justify-center space-x-10 md:flex-row md:justify-between">
             <div>
               <h1 className="text-4xl font-bold">
@@ -81,23 +80,31 @@ const Home: NextPage = () => {
                 </div>
               </h1>
               <h2 className="pt-5 text-2xl font-bold">
-                Save your tabs and access them anywhere. Hassle free.
+                Store your tabs and access them anywhere, anytime.
               </h2>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 md:items-center">
               {/* TODO: replace with image of actual application */}
               <Image
-                src="/gal2.png"
+                src="/demo2.png"
                 alt="Image of a computer"
                 width={600}
                 height={600}
-                className="rounded-xl"
+                className="rounded-xl border border-white"
               />
             </div>
           </div>
         </div>
-        <div className="text-center">
-          <h1 className="py-5 text-4xl font-bold">Browse stress-free</h1>
+        <div>
+          <h1 className="relative z-10 flex justify-center py-5 text-center text-4xl font-bold">
+            <span className="z-10">Browse stress-free</span>
+            <svg
+              className="absolute h-2 w-7/12 translate-y-8"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="100%" height="100%" fill="#561c7d" />
+            </svg>
+          </h1>
           <p className="text-xl">
             Let our extension do the heavy lifting with features such as:
           </p>
@@ -122,8 +129,12 @@ const Home: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mb-2 mt-4 text-2xl font-bold">Easy Bookmarking</h3>
-                <p className="text-lg">Instantly save your open tabs as a session.</p>
+                <h3 className="mb-2 mt-4 text-2xl font-bold">
+                  Easy Bookmarking
+                </h3>
+                <p className="text-lg">
+                  Save links in your current window with the click of a button.
+                </p>
               </div>
               <div>
                 <div>
@@ -150,7 +161,12 @@ const Home: NextPage = () => {
                   <img src="icon-url" alt="Feature 3" />
                 </div>
                 <h3 className="mb-2 mt-4 text-2xl font-bold">Feature 3</h3>
-                <p className="text-lg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem architecto veniam nam quaerat esse, eos eveniet rerum quia possimus dolorem magni, quisquam alias enim cumque ex iusto dignissimos dolores cupiditate.</p>
+                <p className="text-lg">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
+                  architecto veniam nam quaerat esse, eos eveniet rerum quia
+                  possimus dolorem magni, quisquam alias enim cumque ex iusto
+                  dignissimos dolores cupiditate.
+                </p>
               </div>
             </div>
           </div>
