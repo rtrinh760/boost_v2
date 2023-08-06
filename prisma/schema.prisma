@@ -12,17 +12,16 @@ model Tab {
   url        String
   title      String
   id         String   @id @default(cuid())
-  user_id    String   
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   session_id String
-  session    Session  @relation(fields: [user_id], references: [session_id])
+  session    Session  @relation(fields: [session_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
-  @@index([user_id])
+  @@index([session_id])
 }
 
 model Session {
-  session_id   String   @id @default(cuid())
+  id   String   @id @default(uuid())
   session_name String
   user_id      String
   tabs         Tab[]
@@ -35,12 +34,11 @@ model Session {
 
 model Note {
   id         String   @id @default(cuid())
-  user_id    String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   content    String
   session_id String
-  session    Session  @relation(fields: [user_id], references: [session_id])
+  session    Session  @relation(fields: [session_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
-  @@index([user_id])
+  @@index([session_id])
 }
