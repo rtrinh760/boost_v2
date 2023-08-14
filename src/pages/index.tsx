@@ -44,12 +44,12 @@ const Home: NextPage = () => {
           <div id="navbar-menu" className="relative w-auto justify-end">
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
-                <SignInButton mode="modal" redirectUrl="/dashboard">
+                <SignInButton mode="modal" redirectUrl="/sessions">
                   <button className="flex-end rounded-lg bg-[#280d3a] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5">
                     Sign In
                   </button>
                 </SignInButton>
-                <SignUpButton mode="modal" redirectUrl="/dashboard">
+                <SignUpButton mode="modal" redirectUrl="/sessions">
                   <button className="flex-end rounded-lg bg-[#561c7d] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
                     Sign Up
                   </button>
@@ -58,9 +58,9 @@ const Home: NextPage = () => {
             </SignedOut>
             <SignedIn>
               <div className="flex flex-row space-x-10">
-                <Link href="/dashboard">
+                <Link href="/sessions">
                   <button className="flex-end rounded-lg bg-[#561c7d] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
-                    Dashboard
+                    Sessions
                   </button>
                 </Link>
                 <UserButton afterSignOutUrl="/" />
@@ -158,14 +158,24 @@ const Home: NextPage = () => {
               </div>
               <div>
                 <div>
-                  <img src="icon-url" alt="Feature 3" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                    />
+                  </svg>
                 </div>
-                <h3 className="mb-2 mt-4 text-2xl font-bold">Feature 3</h3>
+                <h3 className="mb-2 mt-4 text-2xl font-bold">Session Sharing</h3>
                 <p className="text-lg">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
-                  architecto veniam nam quaerat esse, eos eveniet rerum quia
-                  possimus dolorem magni, quisquam alias enim cumque ex iusto
-                  dignissimos dolores cupiditate.
+                  Quickly share sessions with a link that lets users view and edit your session.
                 </p>
               </div>
             </div>
