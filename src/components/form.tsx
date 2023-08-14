@@ -3,7 +3,11 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "~/utils/api";
 
-const Form = () => {
+interface FormProps {
+  sessionId: string;
+}
+
+const Form = ({ sessionId }: FormProps) => {
   const [input, setInput] = useState("");
   const { isSignedIn } = useAuth();
 
@@ -15,7 +19,7 @@ const Form = () => {
       void ctx.tabs.getAll.invalidate();
     },
     onError: () => {
-      toast.error("Invalid URL! Please try again.");
+      toast.error("URL is invalid. Please try again.");
     }
   });
 
@@ -28,7 +32,7 @@ const Form = () => {
       onSubmit={(e) => {
         e.preventDefault();
 
-        mutate({ url: input.toLowerCase() });
+        mutate({  session_id: sessionId, url: input.toLowerCase() });
         setInput("");
       }}
       className="pl-40 group">
@@ -41,7 +45,7 @@ const Form = () => {
       />
       <button
         type="submit"
-        className="p-2 align-middle text-white focus:outline-none"
+        className="p-2 align-middle absolute text-white focus:outline-none"
       >
         <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
