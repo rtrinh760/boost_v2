@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-export type Tab = {
+type Tab = {
   url: string;
   title: string;
   id: string;
-  user_id: string;
+  session_id: string;
   createdAt: Date;
   updatedAt: Date;
 };

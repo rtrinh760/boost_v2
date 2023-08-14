@@ -1,52 +1,53 @@
 import { z } from "zod";
 import getMetaData from "metadata-scraper";
-
 import { createTRPCRouter, privateProcedure } from "~/server/api/trpc";
 
 export const tabsRouter = createTRPCRouter({
-  getAll: privateProcedure.query(async ({ ctx }) => {
-    const currentUserId = ctx.userId;
-
-    try {
-      return await ctx.prisma.tab.findMany({
-        where: {
-          user_id: currentUserId,
-        },
-        orderBy: {
-          createdAt: "asc",
-        },
-      });
-    } catch (error) {
-      console.log("error", error);
-      throw new Error("Error getting tabs");
-    }
-  }),
+  getAll: privateProcedure
+    .input(
+      z.object({
+        session_id: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      try {
+        return await ctx.prisma.tab.findMany({
+          where: {
+            session_id: input.session_id,
+          },
+          orderBy: {
+            createdAt: "asc",
+          },
+        });
+      } catch (error) {
+        console.log("error", error);
+        throw new Error("Error getting tabs");
+      }
+    }),
 
   create: privateProcedure
     .input(
       z.object({
+        session_id: z.string(),
         url: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const currentUserId = ctx.userId;
-
-      if(!input.url.startsWith("http")) {
+      if (!input.url.startsWith("http")) {
         input.url = "https://" + input.url;
       }
 
       try {
-        let { title: urlTitle } = await getMetaData(input.url);
+        const { title: urlTitle } = await getMetaData(input.url);
 
         if (!urlTitle) {
-          urlTitle = input.url;
+          throw new Error("Error getting metadata");
         }
 
         await ctx.prisma.tab.create({
           data: {
-            user_id: currentUserId,
             url: input.url,
-            session_id: "",
+            session_id: input.session_id,
             title: urlTitle,
           },
         });
