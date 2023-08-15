@@ -21,6 +21,28 @@ export const sessionsRouter = createTRPCRouter({
     }
   }),
 
+  getOne: privateProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      try {
+        return await ctx.prisma.session.findMany({
+          where: {
+            id: input.id,
+          },
+          orderBy: {
+            createdAt: "asc",
+          },
+        });
+      } catch (error) {
+        console.log("error", error);
+        throw new Error("Error getting sessions");
+      }
+    }),
+
   create: privateProcedure
     .input(
       z.object({
