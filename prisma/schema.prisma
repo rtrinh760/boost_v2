@@ -25,7 +25,7 @@ model Session {
   session_name String
   user_id      String
   tabs         Tab[]
-  notes        Note[]
+  notes        Note?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
@@ -37,7 +37,7 @@ model Note {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   content    String
-  session_id String
+  session_id String @unique
   session    Session  @relation(fields: [session_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
   @@index([session_id])
