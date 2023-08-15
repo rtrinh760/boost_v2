@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   if (isSessionDataLoading) {
     return (
-      <main className="flex min-h-screen flex-col bg-[#110619]">
+      <main className="flex min-h-screen flex-col bg-[#fcfbfe]">
         <div className="flex flex-1 flex-col items-center justify-center px-20 text-center">
           <FadeLoader
             color="rgb(152 64 212)"
@@ -37,12 +37,12 @@ const Sidebar = () => {
 
   if (!sessionData) {
     toast.error("Unable to retrieve sessions. Please try again.");
-    return <main className="flex min-h-screen flex-col bg-[#110619]"></main>;
+    return <main className="flex min-h-screen flex-col bg-[#fcfbfe]"></main>;
   }
 
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-60 lg:flex-col">
-      <div className="flex grow flex-col gap-y-10 overflow-y-auto border-r-2 border-[#20092f] pb-4 pl-2 pr-12">
+      <div className="flex grow flex-col gap-y-10 overflow-y-auto border-r-2 border-zinc-200 pb-4 pl-2 pr-12">
         <div className="flex h-16 shrink-0 items-center">
           <h1 className="text-3xl font-bold"></h1>
         </div>
@@ -51,12 +51,12 @@ const Sidebar = () => {
             sessionData.map((session) => (
               <div key={session.id}>
                 <Link href={`/sessions/${session.id}`}>
-                  <button className="flex-end w-full bg-[#20092f] py-1 font-bold text-white transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
+                  <button className="flex-end w-full py-1 font-bold text-[#0a0510] transition ease-in-out hover:bg-zinc-200">
                     {session.session_name}
                   </button>
                 </Link>
                 <button
-                  className="flex-end absolute right-4 translate-y-2 font-bold text-gray-500 hover:text-white group-hover:block group-hover:text-white"
+                  className="flex-end absolute right-4 translate-y-2 font-bold text-zinc-400 hover:text-[#0a0510] group-hover:block group-hover:text-[#0a0510]"
                   onClick={() => mutate({ id: session.id })}
                 >
                   <span>

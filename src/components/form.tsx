@@ -38,14 +38,14 @@ const Form = ({ sessionId }: FormProps) => {
       className="pl-40 group">
       <input
         type="text"
-        className=" bg-[#110619] align-middle px-4 py-2 text-white focus:outline-none"
+        className=" bg-[#fcfbfe] align-middle px-4 py-2 text-[#0a0510] focus:outline-none"
         placeholder="Enter URL"
         value={input}
         onChange={(event) => setInput(event.target.value)}
       />
       <button
         type="submit"
-        className="p-2 align-middle absolute text-white focus:outline-none"
+        className="p-2 align-middle absolute text-zinc-400 focus:outline-none"
       >
         <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

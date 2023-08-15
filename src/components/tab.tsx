@@ -21,7 +21,7 @@ const Tab = (props: Tab) => {
 
   return (
     <div key={tab.id}>
-      <div className="p-2 text-white">
+      <div className="p-2 text-[#0a0510]">
         <Link
           href={tab.url}
           target="_blank"

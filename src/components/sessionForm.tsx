@@ -35,14 +35,14 @@ const SessionForm = () => {
       <div className="flex items-center">
         <input
           type="text"
-          className="w-3/4 bg-[#110619] px-2 py-2 text-white focus:outline-none"
+          className="w-3/4 bg-[#fcfbfe] px-2 py-2 text-[#0a0510] focus:outline-none"
           placeholder="Enter Session Name"
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
         <button
           type="submit"
-          className="w-1/4 p-2 align-middle text-white focus:outline-none"
+          className="w-1/4 p-2 align-middle text-[#0a0510] focus:outline-none"
         >
           <span>
             <svg
@@ -51,7 +51,7 @@ const SessionForm = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="h-5 w-5 text-gray-500 hover:text-white"
+              className="h-5 w-5 text-zinc-400 hover:text-[#0a0510]"
             >
               <path
                 strokeLinecap="round"
