@@ -36,7 +36,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="my-24 hidden 2xl:fixed 2xl:inset-y-0 2xl:flex 2xl:w-60 2xl:flex-col">
+    <div className="my-24 hidden xl:fixed xl:inset-y-0 xl:flex xl:w-60 xl:flex-col">
       <div className="flex grow flex-col gap-y-10 overflow-y-auto">
         <h1 className="p-8 text-center text-3xl font-semibold">Sessions</h1>
         <nav className="flex flex-1 flex-col">
