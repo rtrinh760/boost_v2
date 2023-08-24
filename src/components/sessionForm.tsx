@@ -30,19 +30,19 @@ const SessionForm = () => {
         mutate({ session_name: input });
         setInput("");
       }}
-      className="group"
+      className="group relative flex flex-1 flex-row w-max"
     >
-      <div className="flex items-center">
+      <div className="flex flex-1 items-center">
         <input
           type="text"
-          className="w-3/4 bg-[#fcfbfe] px-2 py-2 text-[#0a0510] focus:outline-none"
-          placeholder="Enter Session Name"
+          className="w-full bg-[#fcfbfe] px-2 py-2 text-[#0a0510] focus:outline-none"
+          placeholder="Session Name"
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
         <button
           type="submit"
-          className="w-1/4 p-2 align-middle text-[#0a0510] focus:outline-none"
+          className="flex-end absolute right-3 hidden font-bold hover:text-[#0a0510] group-hover:block group-hover:text-[#0a0510]"
         >
           <span>
             <svg
@@ -51,7 +51,7 @@ const SessionForm = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="h-5 w-5 text-zinc-400 hover:text-[#0a0510]"
+              className="h-5 w-5 text-[#0a0510]"
             >
               <path
                 strokeLinecap="round"

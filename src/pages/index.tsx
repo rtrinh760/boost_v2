@@ -45,12 +45,12 @@ const Home: NextPage = () => {
             <SignedOut>
               <div className="space-x-3 md:mt-0 md:flex-row">
                 <SignInButton mode="modal" redirectUrl="/sessions">
-                  <button className="text-white flex-end rounded-lg bg-[#e2d4f2] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5">
+                  <button className="text-white flex-end rounded-lg bg-[#44078a] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5">
                     Sign In
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal" redirectUrl="/sessions">
-                  <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
+                  <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:bg-[#9b44ff]">
                     Sign Up
                   </button>
                 </SignUpButton>
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             <SignedIn>
               <div className="flex flex-row space-x-10">
                 <Link href="/sessions">
-                  <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
+                  <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:bg-[#9b44ff]">
                     Sessions
                   </button>
                 </Link>
@@ -84,7 +84,6 @@ const Home: NextPage = () => {
               </h2>
             </div>
             <div className="md:w-1/2 md:items-center">
-              {/* TODO: replace with image of actual application */}
               <Image
                 src="/demo2.png"
                 alt="Image of demo"

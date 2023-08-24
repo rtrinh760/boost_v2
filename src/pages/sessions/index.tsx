@@ -57,7 +57,7 @@ const Dashboard: NextPage = () => {
               <div id="navbar-menu" className="relative w-auto justify-end">
                 <div className="flex flex-row space-x-10">
                   <Link href="/">
-                    <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:shadow-[0_20px_60px_-10px_rgba(152,64,212,0.7)]">
+                    <button className="text-white flex-end rounded-lg bg-[#6c34ad] px-4 py-1 font-bold transition ease-in-out hover:-translate-y-0.5 hover:bg-[#9b44ff]">
                       Home
                     </button>
                   </Link>
